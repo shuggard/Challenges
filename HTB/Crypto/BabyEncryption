@@ -1,0 +1,19 @@
+enc_msg ='Hex_vlues_go_here'
+
+decimal_msg = []
+
+for x in bytes.fromhex(enc_msg):
+        decimal_msg.append(x)
+
+def original_char_value(n):
+        for i in range(128):
+                if ((123 * i +18) % 256 == n):
+                        return i
+
+flag = ""
+
+for item in decimal_msg:
+        flag += chr(original_char_value(item))
+
+print(flag)
+                                                                                                                                                                                                                  ~                                        
