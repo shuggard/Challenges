@@ -1,0 +1,38 @@
+#Python2
+
+import optparse
+import sys
+import zipfile
+from threading import Thread
+
+# Unzip Files
+def UnzipFiles(zname):
+    try:
+        zipped_file = zipfile.ZipFile(zname) 
+        file_info =  zipped_file.infolist()
+		password = filename.split(".")
+        filename =  file_info[0].filename
+        zipped_file.extractall(pwd = password[0])
+        print "The file " + zname + " was extracted " + password[0]
+        last_file = filename
+        UnzipFiles(filename)
+        
+        
+       
+    except:
+        print "Files have fininshed extracting" 
+    
+        
+def main():
+    parser = optparse.OptionParser('usage: ZipBrute.py ' + '-f <zipfile>')
+    parser.add_option('-f', dest='zname',type='string',help='specify zip file')
+    (options,args) = parser.parse_args()
+    if (options.zname == None):
+        print parser.usage
+        exit(0)
+    else:
+        zname = options.zname
+    UnzipFiles(zname)
+
+if __name__ == '__main__':
+    main()
